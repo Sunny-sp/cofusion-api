@@ -1,34 +1,31 @@
 {
   "name": "cofusion-api",
-  "version": "1.0.0",
+  "homepage": "https://sunny-sp.github.io/confusion-api/",
+  "version": "0.0.0",
   "type": "module",
+  "private": true,
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "rollup -c rollup.config.js",
-    "start:server": "node ./bin/www",
-    "start": "node ./build/index"
+    "start": "node ./bin/www",
+    "start:dev": "node ./build/index"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sunny-sp/cofusion-api.git"
-  },
-  "author": "Sunny",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Sunny-sp/cofusion-api/issues"
-  },
-  "homepage": "https://github.com/Sunny-sp/cofusion-api#readme",
   "dependencies": {
-    "debug": "^4.3.4",
-    "express": "^4.18.2",
-    "http-errors": "^2.0.0",
-    "jade": "^1.11.0",
-    "morgan": "^1.10.0"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
     "@lmaj/passport-facebook-token": "^4.0.0",
     "@rollup/plugin-image": "^3.0.2",
+    "babel-loader": "^9.1.2",
+    "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.0.3",
@@ -36,13 +33,16 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.4",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^2.0.21",
-    "passport": "^0.5.3",
+    "nodemon": "^2.0.20",
+    "passport": "^0.4.1",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2",
-    "rollup": "^3.19.0",
+    "rollup": "^3.18.0",
     "rollup-plugin-copy": "^3.4.0",
-    "session-file-store": "^1.5.0"
+    "session-file-store": "^1.5.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-node-externals": "^3.0.0"
   }
 }

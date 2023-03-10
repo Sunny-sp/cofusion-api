@@ -6,8 +6,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "rollup -c rollup.config.js",
-    "start": "node ./bin/www",
-    "start:dev": "node ./build/index"
+    "start:server": "node ./bin/www",
+    "start": "node ./build/index"
   },
   "repository": {
     "type": "git",

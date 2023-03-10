@@ -1,7 +1,5 @@
-import mongoose, { mongo } from "mongoose";
-import { loadType } from "mongoose-currency";
+import mongoose from "mongoose";
 
-const Currency = loadType(mongoose);
 const Schema = mongoose.Schema;
 
 const promotionsSchema = new Schema({
@@ -18,9 +16,11 @@ const promotionsSchema = new Schema({
         default: ''
     },
     price: {
-        type: Currency,
+        type: Number,
         required: true,
-        min: 0
+        min: 0,
+        get: price => (price/100).toFixed(2),
+        set: price => price*100
     },
     description: {
         type: String,

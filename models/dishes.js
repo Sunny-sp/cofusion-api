@@ -1,7 +1,4 @@
 import mongoose from "mongoose";
-import { loadType} from 'mongoose-currency'
-
-const Currency = loadType(mongoose);
 const Schema = mongoose.Schema;
 
 const dishSchema = new Schema({
@@ -22,10 +19,12 @@ const dishSchema = new Schema({
         type: String,
         default: ''
     },
-    price:{
-        type: Currency,
+    price: {
+        type: Number,
         required: true,
-        min: 0
+        min: 0,
+        get: price => (price/100).toFixed(2),
+        set: price => price*100
     },
     featured:{
         type: Boolean,

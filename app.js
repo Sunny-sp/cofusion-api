@@ -7,16 +7,16 @@ import usersRouter from './routes/userRouter.js';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import './authenticate.js';
-import config from './config.js';
 import dishRouter from './routes/dishRouter.js';
 import promoRouter from './routes/promoRouter.js';
 import leaderRouter from './routes/leaderRouter.js';
 import cors from 'cors';
 import favoriteRouter from './routes/favoriteRouter.js';
 import commentRouter from './routes/commentRouter.js';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const url = "mongodb+srv://Sunny:3KjbiflU5WKxSU6r@atlascluster.tjkos8d.mongodb.net/test"
-const connect = mongoose.connect(url);
+const connect = mongoose.connect(process.env.MONGO_URL);
 
 connect.then(db=>{
   console.log('connected to database successfully');

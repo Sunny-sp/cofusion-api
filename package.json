@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node ./bin/www"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "rollup -c rollup.config.js",
+    "start:server": "node ./bin/www",
+    "start": "node ./build/index"
   },
   "repository": {
     "type": "git",
@@ -27,6 +31,7 @@
     "@rollup/plugin-image": "^3.0.2",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.4",

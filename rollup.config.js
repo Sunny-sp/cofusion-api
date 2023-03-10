@@ -1,5 +1,6 @@
 import path from "path";
 import {fileURLToPath} from 'url';
+import image from '@rollup/plugin-image';
 import copy from 'rollup-plugin-copy';
 
 const __filename = fileURLToPath(import.meta.url);

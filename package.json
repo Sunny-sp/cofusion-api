@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@lmaj/passport-facebook-token": "^4.0.0",
+    "@rollup/plugin-image": "^3.0.2",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "express-session": "^1.17.3",

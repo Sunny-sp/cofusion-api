@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build": "rollup -c rollup.config.js",
-    "start:server": "node ./bin/www",
-    "start": "node ./build/index"
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",

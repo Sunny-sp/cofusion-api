@@ -18,40 +18,43 @@ const __dirname = path.dirname(__filename);
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3443');
-// app.set('port', port);
-app.set('secPort', port);
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+// app.set('secPort', port);
 
 /**
  * Create HTTP server.
  */
 
-// const server = http.createServer(app);
+const server = http.createServer(app);
 
 /**
  * Create HTTPS server.
  */
-const options = {
-  key: fs.readFileSync(path.join(__dirname, 'private.key')),
-  cert: fs.readFileSync(path.join(__dirname, 'certificate.pem'))
-}
-const secureServer = https.createServer(options, app);
+// const options = {
+//   key: fs.readFileSync(path.join(__dirname, 'private.key')),
+//   cert: fs.readFileSync(path.join(__dirname, 'certificate.pem'))
+// }
+// const secureServer = https.createServer(options, app);
 /**
  * Listen on provided port, on all network interfaces.
  */
 
 // server.listen(port);
-// server.on('error', onError);
-// server.on('listening', onListening);
+server.listen(app.get('port'), ()=>{
+  console.log('Server listening on port: '+ app.get('port'));
+});
+server.on('error', onError);
+server.on('listening', onListening);
 /**
  * Listen on provided  secure port, on all network interfaces.
  */
-secureServer.listen(app.get('secPort'), ()=>{
-  console.log('Server listening on port: '+ app.get('secPort'));
-});
-
-secureServer.on('error', onError);
-secureServer.on('listening',onListening);
+// secureServer.listen(app.get('secPort'), ()=>{
+//   console.log('Server listening on port: '+ app.get('secPort'));
+// });
+// 
+// secureServer.on('error', onError);
+// secureServer.on('listening',onListening);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -106,7 +109,7 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = secureServer.address();
+  var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;

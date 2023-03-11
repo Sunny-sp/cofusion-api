@@ -9,8 +9,6 @@ import User from "./models/user.js";
 import { Strategy as LocalStrategy } from 'passport-local';
 import config from "./config.js";
 import PassportFacebookToken from "@lmaj/passport-facebook-token";
-import * as dotenv from 'dotenv';
-dotenv.config();
 
 // passport authentication configuration
 // make sure you import in app.js file before using passport.authenticate() function (import './authenticate)
@@ -47,7 +45,7 @@ export const getToken = (user_id) => {
 const opts = {};
 
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = process.env.secretKey
+opts.secretOrKey = config.secretKey;
 
 export const jwtPassport = passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
     console.log('JWT Payload' + JSON.stringify(jwt_payload, null, 2));

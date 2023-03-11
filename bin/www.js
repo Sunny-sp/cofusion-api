@@ -18,7 +18,7 @@ const __dirname = path.dirname(__filename);
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3443');
 // app.set('port', port);
 app.set('secPort', port);
 
@@ -47,7 +47,7 @@ const secureServer = https.createServer(options, app);
  * Listen on provided  secure port, on all network interfaces.
  */
 secureServer.listen(app.get('secPort'), ()=>{
-  console.log('Server listening on port'+ app.get('secPort'));
+  console.log('Server listening on port: '+ app.get('secPort'));
 });
 
 secureServer.on('error', onError);
@@ -106,7 +106,7 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
+  var addr = secureServer.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;

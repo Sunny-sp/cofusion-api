@@ -1,6 +1,5 @@
 import express from "express";
 import * as authenticate from '../authenticate.js';
-import bodyParser from "body-parser";
 import multer from "multer";
 import * as cors from './cors.js';
 

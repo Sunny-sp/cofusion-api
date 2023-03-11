@@ -1,7 +1,6 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 import * as authenticate from '../authenticate.js';
-import Dishes from '../models/dishes.js';
 import Favorites from '../models/favorite.js';
 import * as cors from './cors.js';
 

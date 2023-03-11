@@ -7,7 +7,6 @@ import { ExtractJwt } from "passport-jwt";
 import passport from "passport";
 import User from "./models/user.js";
 import { Strategy as LocalStrategy } from 'passport-local';
-import config from "./config.js";
 import PassportFacebookToken from "@lmaj/passport-facebook-token";
 import * as dotenv from 'dotenv';
 dotenv.config();

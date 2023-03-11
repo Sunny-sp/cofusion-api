@@ -19,14 +19,14 @@ const __dirname = path.dirname(__filename);
  */
 
 const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
-app.set('secPort', port + 443);
+// app.set('port', port);
+app.set('secPort', port);
 
 /**
  * Create HTTP server.
  */
 
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
 /**
  * Create HTTPS server.
@@ -40,9 +40,9 @@ const secureServer = https.createServer(options, app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+// server.listen(port);
+// server.on('error', onError);
+// server.on('listening', onListening);
 /**
  * Listen on provided  secure port, on all network interfaces.
  */

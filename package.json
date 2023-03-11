@@ -5,9 +5,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "predeploy": "npm run build:server",
-    "deploy": "gh-pages -d build:server",
-    "build": "npm install",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "npm install && rollup -c rollup.config.js",
     "build:server:": "rollup -c rollup.config.js",
     "start": "node ./bin/www",
     "start:dev": "node ./build/index"

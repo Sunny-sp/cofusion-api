@@ -9,7 +9,8 @@ import User from "./models/user.js";
 import { Strategy as LocalStrategy } from 'passport-local';
 import config from "./config.js";
 import PassportFacebookToken from "@lmaj/passport-facebook-token";
-
+import * as dotenv from 'dotenv';
+dotenv.config();
 // passport authentication configuration
 // make sure you import in app.js file before using passport.authenticate() function (import './authenticate)
 // serialize and deserialize will use salt and mix it with username or password and make a hash data
@@ -39,13 +40,13 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 export const getToken = (user_id) => {
-    return jwt.sign(user_id, config.secretKey, { expiresIn: '1h' });
+    return jwt.sign(user_id, process.env.JWT_KEY, { expiresIn: '360hr' });
 }
 // options object
-const opts = {};
-
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = config.secretKey;
+const opts = {
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: process.env.JWT_KEY
+};
 
 export const jwtPassport = passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
     console.log('JWT Payload' + JSON.stringify(jwt_payload, null, 2));
@@ -64,7 +65,7 @@ export const jwtPassport = passport.use(new JwtStrategy(opts, (jwt_payload, done
 
 export const facebookPassport = passport.use(new PassportFacebookToken(
     {
-        clientID: config.facebook.clientId, clientSecret: config.facebook.clientSecret,
+        clientID: process.env.FACEBOOK_CLIENT_ID, clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
         callbackURL: 'https://localhost:3443/users/facebook/token'
     },
     (accessToken, refreshToken, profile, done) => {

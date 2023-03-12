@@ -23,8 +23,8 @@ const dishSchema = new Schema({
         type: Number,
         required: true,
         min: 0,
-        get: price => (price/100).toFixed(2),
-        set: price => price*100
+        get: price => (price).toFixed(2),
+        set: price => price
     },
     featured:{
         type: Boolean,

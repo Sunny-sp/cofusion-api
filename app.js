@@ -41,6 +41,7 @@ const app = express();
 
 import {fileURLToPath} from 'url';
 import uploadRouter from './routes/uploadRouter.js';
+import feedbackRouter from './routes/feedbackRouter.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -60,11 +61,12 @@ app.use('/users', usersRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 // after authentication now can access other end-points
 app.use('/dishes',dishRouter);
-app.use('/comments', commentRouter)
+app.use('/comments', commentRouter);
 app.use('/promotions',promoRouter);
 app.use('/leaders',leaderRouter);
 app.use('/imageUpload',uploadRouter);
 app.use('/favorites', favoriteRouter);
+app.use('/feedback', feedbackRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

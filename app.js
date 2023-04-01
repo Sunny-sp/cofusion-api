@@ -11,6 +11,7 @@ import dishRouter from './routes/dishRouter.js';
 import promoRouter from './routes/promoRouter.js';
 import leaderRouter from './routes/leaderRouter.js';
 import cors from 'cors';
+import { corsWithOptions } from './routes/cors.js';
 import favoriteRouter from './routes/favoriteRouter.js';
 import commentRouter from './routes/commentRouter.js';
 import * as dotenv from 'dotenv';
@@ -53,7 +54,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser('1234-453-356-456-456454'));
 
 app.use(passport.initialize());
-app.use(cors());
+app.use(corsWithOptions);
 app.use('/', indexRouter);
 // authentications
 

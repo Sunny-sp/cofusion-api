@@ -9,7 +9,8 @@ export const corsOptionsDelegate = {
         } else {
         callback(new Error('Not allowed by CORS'))
         }
-    }
+    },
+    headers: ['Origin', 'Content-Type','Authorization'],
 }
 
 export const openCors = cors();

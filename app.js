@@ -54,7 +54,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser('1234-453-356-456-456454'));
 
 app.use(passport.initialize());
-app.use(corsWithOptions);
+app.use(cors());
 app.use('/', indexRouter);
 // authentications
 
